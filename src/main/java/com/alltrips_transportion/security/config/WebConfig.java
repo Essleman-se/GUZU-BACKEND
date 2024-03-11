@@ -24,7 +24,8 @@ public class WebConfig {
     public FilterRegistrationBean corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
+        config.setAllowCredentials(true);        
+        config.addAllowedOrigin("http://ec2-18-222-237-78.us-east-2.compute.amazonaws.com");
         config.addAllowedOrigin("http://localhost:3000");
         config.setAllowedHeaders(Arrays.asList(
                 HttpHeaders.AUTHORIZATION,

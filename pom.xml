@@ -96,6 +96,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>All-TRIPS-Transport</finalName>
 	</build>
 
 </project>
