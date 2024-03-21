@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class UserService  {
+public class UserService implements IUserService {
 
 	@Autowired
 	private final UserRepository repository;

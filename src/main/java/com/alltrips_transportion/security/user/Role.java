@@ -41,9 +41,8 @@ public enum Role {
                   MANAGER_DELETE,
                   MANAGER_CREATE
           )
-  )
-
-  ;
+  ),
+  CUSTOMER(Collections.emptySet());
 
   @Getter
   private final Set<Permission> permissions;

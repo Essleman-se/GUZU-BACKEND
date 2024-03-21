@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -35,7 +34,6 @@ import lombok.RequiredArgsConstructor;
 //@CrossOrigin(origins = {"http://http://3.17.160.36"})
 @RestController
 @RequestMapping("/api/v1/management")
-@PreAuthorize("hasRole('MANAGER')")
 @Tag(name = "Management")
 @RequiredArgsConstructor
 public class ManagementController {
@@ -54,14 +52,12 @@ public class ManagementController {
 	}
 
 	@GetMapping("/get/{id}")
-	@PreAuthorize("hasAuthority('management:read')")
 	public ResponseEntity<UserDto> findById(@PathVariable(required = false) Integer id) {
 		Optional<UserDto> userDto = userService.findById(id);
 		return new ResponseEntity<UserDto>(userDto.get(), HttpStatus.OK);
 	}
 
 	@GetMapping("/get/all")
-	@PreAuthorize("hasAuthority('management:read')")
 	public ResponseEntity<List<UserDto>> findAllUsers() {
 		LOG.info("All user list end point");
 		List<UserDto> userDtos = userService.feachAllUsers();
@@ -105,7 +101,6 @@ public class ManagementController {
 	}
 
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAuthority('management:delete')")
 	public ResponseEntity<String> delete(@PathVariable Integer id) {
 		LOG.info("User Delete : {}", id);		
 		
